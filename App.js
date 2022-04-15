@@ -36,8 +36,10 @@ export default function App() {
   };
 
   const loadToDos = async () => {
-    const s = await AsnyncStorage.getItem(STORAGE_KEY);
-    setToDos(JSON.parse(s));
+    const str = await AsnyncStorage.getItem(STORAGE_KEY);
+    if (str) {
+      setToDos(JSON.parse(str));
+    }
   };
 
   const addToDo = async () => {
